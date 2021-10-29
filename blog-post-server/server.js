@@ -9,6 +9,8 @@ const {
 } = require('merge-graphql-schemas')
 
 const mongoose = require('mongoose')
+
+//configure environment
 require('dotenv').config()
 
 const app = express()
