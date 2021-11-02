@@ -1,40 +1,39 @@
-const { gql } = require('apollo-server-express')
+const { gql } = require("apollo-server-express");
 
 module.exports = gql`
   type Post {
-    id: ID!
+    id: ID
     author: String
-    title: String!
+    title: String
     description: String
     likes: Int
     dislikes: Int
-    comment: [Comment]
-  }
-
-  type Comment {
-    body: String
+    comment: [String]
   }
 
   #input type
 
   input PostInput {
-    title: String!
+    title: String
     author: String
-    description: String!
+    description: String
     likes: Int
     dislikes: Int
+    comment: [String]
   }
 
   #Query type
 
   type Query {
-    allPosts: [Post!]!
-    totalPosts: Int!
+    allPost: [Post]
+    totalPosts: Int
   }
 
   #mutations
 
   type Mutation {
-    newPost(input: PostInput!): Post!
+    newPost(input: PostInput): Post
+    updatePost(id: String, input: PostInput): Post
+    deletePost(id: String): String
   }
-`
+`;
